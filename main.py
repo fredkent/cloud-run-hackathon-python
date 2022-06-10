@@ -35,7 +35,6 @@ def move():
     #logger.info(request.json)
     tmp=json.dumps(request.json)
     j=json.loads(tmp)
-    print("動作" + moves[1])
     #target=j.find("http://127.0.0.1:8080")
     myState=j["arena"]["state"]["http://127.0.0.1:8080"]
     myPositionX=myState["x"]
@@ -44,9 +43,12 @@ def move():
     myHit=myState["wasHit"]
     print(myState,myPositionX,myPositionY)
     if myHit == True:
+        print("動作" + moves[0])
         return moves[0]
     #return moves[random.randrange(0)]
-    return moves[1]
+    randomMove=random.randrange(1,4)
+    print("動作" + moves[randomMove])
+    return moves[randomMove]
 
 if __name__ == "__main__":
   app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
