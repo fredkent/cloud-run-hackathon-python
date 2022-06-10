@@ -36,7 +36,7 @@ def move():
     tmp=json.dumps(request.json)
     j=json.loads(tmp)
     #target=j.find("http://127.0.0.1:8080")
-    myState=j["arena"]["state"]["http://127.0.0.1:8080"]
+    myState=j["arena"]["state"]["https://cloud-run-hackathon-python-l7bu23fjpq-de.a.run.app"]
     myPositionX=myState["x"]
     myPositionY=myState["y"]
     myDirection=myState["direction"]
