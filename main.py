@@ -16,6 +16,7 @@
 import os
 import logging
 import random
+import json
 from flask import Flask, request
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
@@ -31,7 +32,10 @@ def index():
 @app.route("/", methods=['POST'])
 def move():
     request.get_data()
-    logger.info(request.json)
+    #logger.info(request.json)
+    j=json.dumps(request.json)
+    print("動作"+moves[1])
+    print(j)
     #return moves[random.randrange(0)]
     return moves[1]
 
