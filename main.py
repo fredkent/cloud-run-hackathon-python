@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from cgi import test
 import os
 import logging
 import random
@@ -21,6 +22,8 @@ from flask import Flask, request
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 logger = logging.getLogger(__name__)
+test2222=123
+print(test2222)
 
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
@@ -35,19 +38,18 @@ def move():
     #logger.info(request.json)
     tmp=json.dumps(request.json)
     j=json.loads(tmp)
-    #target=j.find("http://127.0.0.1:8080")
     myState=j["arena"]["state"]["https://cloud-run-hackathon-python-l7bu23fjpq-de.a.run.app"]
+    #myState=j["arena"]["state"]["http://127.0.0.1:8080"]
     myPositionX=myState["x"]
     myPositionY=myState["y"]
     myDirection=myState["direction"]
     myHit=myState["wasHit"]
-    print(myState,myPositionX,myPositionY)
+    print(myState,myDirection)
     if myHit == True:
         print("動作" + moves[0])
         return moves[0]
-    #return moves[random.randrange(0)]
     else:
-        randomMove=random.randrange(1,4)
+        randomMove=random.randrange(0,4)
         print("動作" + moves[randomMove])
         return moves[randomMove]
 
