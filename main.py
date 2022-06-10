@@ -46,9 +46,10 @@ def move():
         print("動作" + moves[0])
         return moves[0]
     #return moves[random.randrange(0)]
-    randomMove=random.randrange(1,4)
-    print("動作" + moves[randomMove])
-    return moves[randomMove]
+    else:
+        randomMove=random.randrange(1,4)
+        print("動作" + moves[randomMove])
+        return moves[randomMove]
 
 if __name__ == "__main__":
   app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
