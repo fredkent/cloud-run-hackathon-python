@@ -47,7 +47,7 @@ def move():
     print(myState,myDirection)
     if myHit == True:
         print("動作" + moves[0])
-        return moves[0]
+        return moves[random.randrange(0,4)]
     else:
         randomMove=random.randrange(0,4)
         print("動作" + moves[randomMove])
