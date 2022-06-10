@@ -33,9 +33,18 @@ def index():
 def move():
     request.get_data()
     #logger.info(request.json)
-    j=json.dumps(request.json)
-    print("動作"+moves[1])
-    print(j)
+    tmp=json.dumps(request.json)
+    j=json.loads(tmp)
+    print("動作" + moves[1])
+    #target=j.find("http://127.0.0.1:8080")
+    myState=j["arena"]["state"]["http://127.0.0.1:8080"]
+    myPositionX=myState["x"]
+    myPositionY=myState["y"]
+    myDirection=myState["direction"]
+    myHit=myState["wasHit"]
+    print(myState,myPositionX,myPositionY)
+    if myHit == True:
+        return moves[0]
     #return moves[random.randrange(0)]
     return moves[1]
 
